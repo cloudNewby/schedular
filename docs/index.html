@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/style.css">
 <!-- Voeg de client-ID toe -->
 <meta name="google-signin-client_id" content="319141367834-6abirr91d7p42fgjrmkg8k1norjg21a1.apps.googleusercontent.com">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -25,14 +26,11 @@
   <div class="g_id_signin" data-type="standard"></div>
 </div>
 
-<!-- Laad de nieuwe Google Identity Services-bibliotheek nadat het DOM volledig is geladen -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-
 <script>
-// Functie voor het verwerken van de inloggegevens
+// Functie om de gebruikersreferenties te verwerken
 function handleCredentialResponse(response) {
   console.log('Gebruiker succesvol ingelogd:', response);
-  // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
+  // Voer hier verdere acties uit, zoals het inloggen van de gebruiker in je systeem.
 }
 </script>
 
