@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="css/style.css">
 <!-- Voeg de client-ID toe -->
 <meta name="google-signin-client_id" content="319141367834-6abirr91d7p42fgjrmkg8k1norjg21a1.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
 
@@ -19,29 +18,36 @@
     <img src="img/EMBLEEM-clb.png" alt="Logo" class="logo">
   </div>
   <!-- Voeg de "Inloggen met Google" knop toe -->
-  <button class="google-login-btn btn btn-primary" id="google-login-btn" data-onsuccess="onSignIn" data-theme="dark">Inloggen met Google</button>
+  <div id="google-login-btn"></div> <!-- Lege div voor de Google Sign-In-knop -->
 </div>
 
+<!-- Laad de Google Sign-In-bibliotheek nadat het DOM volledig is geladen -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <script>
-// Functie voor het verwerken van de inloggegevens
-function onSignIn(googleUser) {
-  console.log('Gebruiker succesvol ingelogd:', googleUser);
+// Functie om in te loggen bij Google
+function signInWithGoogle(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log('Gebruikersprofiel:', profile);
+  console.log('Gebruiker succesvol ingelogd:', profile);
   // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
 }
 
-// Configureer de Google Sign-In-knop met de redirect URI
-function initGoogleSignIn() {
-  gapi.load('auth2', function() {
-    var auth2 = gapi.auth2.init({
-      client_id: '319141367834-6abirr91d7p42fgjrmkg8k1norjg21a1.apps.googleusercontent.com',
-      redirect_uri: 'https://cloudnewby.github.io/schedular/schedular_from.html' // Voeg hier de redirect URI toe
-    });
+// Functie om de Google Sign-In-knop te renderen
+function renderGoogleSignInButton() {
+  gapi.signin2.render('google-login-btn', {
+    'scope': 'profile email',
+    'width': 240,
+    'height': 50,
+    'longtitle': true,
+    'theme': 'dark',
+    'onsuccess': signInWithGoogle
   });
 }
-initGoogleSignIn(); // Roep de functie aan om de Google Sign-In-knop te initialiseren
+
+// Eventlistener toevoegen om de Google Sign-In-knop te renderen nadat de Google Sign-In-bibliotheek is geladen
+window.onload = function() {
+  renderGoogleSignInButton();
+};
 </script>
 
 </body>
