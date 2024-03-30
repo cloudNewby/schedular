@@ -18,36 +18,22 @@
     <img src="img/EMBLEEM-clb.png" alt="Logo" class="logo">
   </div>
   <!-- Voeg de "Inloggen met Google" knop toe -->
-  <div id="google-login-btn"></div> <!-- Lege div voor de Google Sign-In-knop -->
+  <div id="g_id_onload"
+       data-client_id="319141367834-6abirr91d7p42fgjrmkg8k1norjg21a1.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse">
+  </div>
+  <div class="g_id_signin" data-type="standard"></div>
 </div>
 
-<!-- Laad de Google Sign-In-bibliotheek nadat het DOM volledig is geladen -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- Laad de nieuwe Google Identity Services-bibliotheek nadat het DOM volledig is geladen -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <script>
-// Functie om in te loggen bij Google
-function signInWithGoogle(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('Gebruiker succesvol ingelogd:', profile);
+// Functie voor het verwerken van de inloggegevens
+function handleCredentialResponse(response) {
+  console.log('Gebruiker succesvol ingelogd:', response);
   // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
 }
-
-// Functie om de Google Sign-In-knop te renderen
-function renderGoogleSignInButton() {
-  gapi.signin2.render('google-login-btn', {
-    'scope': 'profile email',
-    'width': 240,
-    'height': 50,
-    'longtitle': true,
-    'theme': 'dark',
-    'onsuccess': signInWithGoogle
-  });
-}
-
-// Eventlistener toevoegen om de Google Sign-In-knop te renderen nadat de Google Sign-In-bibliotheek is geladen
-window.onload = function() {
-  renderGoogleSignInButton();
-};
 </script>
 
 </body>
