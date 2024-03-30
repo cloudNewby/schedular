@@ -25,11 +25,13 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <script>
-// Eventlistener toevoegen aan de knop "Inloggen met Google"
-document.getElementById('google-login-btn').addEventListener('click', function() {
-  // Start het inlogproces met Google
+// Functie om in te loggen bij Google
+function signInWithGoogle() {
   gapi.auth2.getAuthInstance().signIn();
-});
+}
+
+// Eventlistener toevoegen aan de knop "Inloggen met Google"
+document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
 </script>
 
 </body>
