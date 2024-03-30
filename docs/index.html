@@ -30,8 +30,10 @@ function signInWithGoogle() {
   gapi.auth2.getAuthInstance().signIn();
 }
 
-// Eventlistener toevoegen aan de knop "Inloggen met Google"
-document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
+// Eventlistener toevoegen aan de knop "Inloggen met Google" nadat de Google Sign-In-bibliotheek is geladen
+window.onload = function() {
+  document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
+};
 </script>
 
 </body>
