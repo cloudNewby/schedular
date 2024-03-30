@@ -24,17 +24,20 @@
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
-// Functie voor het verwerken van de inloggegevens
-function onSignIn(googleUser) {
-  try {
-    console.log('Gebruiker succesvol ingelogd:', googleUser);
-    var profile = googleUser.getBasicProfile();
-    console.log('Gebruikersprofiel:', profile);
-    // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
-  } catch (error) {
-    console.error('Er is een fout opgetreden:', error);
+// Functie om te controleren of de Google Sign-In bibliotheek is geladen
+function checkGoogleSignInLibrary() {
+  if (typeof gapi !== 'undefined') {
+    // Google Sign-In bibliotheek is geladen, voer de rest van je code uit
+    // Roep bijvoorbeeld hier de functie aan die afhankelijk is van de gapi objecten
+  } else {
+    // Wacht 100 milliseconden en probeer opnieuw
+    setTimeout(checkGoogleSignInLibrary, 100);
   }
 }
+
+// Roep de functie aan om te beginnen met controleren of de bibliotheek is geladen
+checkGoogleSignInLibrary();
 </script>
+
 </body>
 </html>
