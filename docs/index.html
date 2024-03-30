@@ -6,6 +6,8 @@
 <title>Index Pagina</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
+<!-- Voeg de client-ID toe -->
+<meta name="google-signin-client_id" content="966215562430-1ukpqcb2un8uogdnv89sfe5h7t6foe0f.apps.googleusercontent.com">
 </head>
 <body>
 
@@ -23,13 +25,16 @@
 <script>
 // Functie voor het verwerken van de inloggegevens
 function onSignIn(googleUser) {
-  console.log('Gebruiker succesvol ingelogd:', googleUser);
-  var profile = googleUser.getBasicProfile();
-  console.log('Gebruikersprofiel:', profile);
-  // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
+  try {
+    console.log('Gebruiker succesvol ingelogd:', googleUser);
+    var profile = googleUser.getBasicProfile();
+    console.log('Gebruikersprofiel:', profile);
+    // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
+  } catch (error) {
+    console.error('Er is een fout opgetreden:', error);
+  }
 }
 </script>
 
 </body>
 </html>
-
