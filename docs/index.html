@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VCLB De Wissel Schedular</title>
-<link rel="icon" type="image/jpeg" href="img/EMBLEEM-clb.png">
+<title>Index Pagina</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- Voeg de client-ID toe -->
 <meta name="google-signin-client_id" content="319141367834-6abirr91d7p42fgjrmkg8k1norjg21a1.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
 
@@ -22,21 +22,18 @@
   <button class="google-login-btn btn btn-primary" id="google-login-btn" data-onsuccess="onSignIn" data-theme="dark">Inloggen met Google</button>
 </div>
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script>
-// Functie om te controleren of de Google Sign-In bibliotheek is geladen
-function checkGoogleSignInLibrary() {
-  if (typeof gapi !== 'undefined') {
-    // Google Sign-In bibliotheek is geladen, voer de rest van je code uit
-    // Roep bijvoorbeeld hier de functie aan die afhankelijk is van de gapi objecten
-  } else {
-    // Wacht 100 milliseconden en probeer opnieuw
-    setTimeout(checkGoogleSignInLibrary, 100);
-  }
-}
 
-// Roep de functie aan om te beginnen met controleren of de bibliotheek is geladen
-checkGoogleSignInLibrary();
+<script>
+// Wacht tot het DOM volledig is geladen voordat JavaScript wordt uitgevoerd
+document.addEventListener("DOMContentLoaded", function() {
+  // Functie voor het verwerken van de inloggegevens
+  function onSignIn(googleUser) {
+    console.log('Gebruiker succesvol ingelogd:', googleUser);
+    var profile = googleUser.getBasicProfile();
+    console.log('Gebruikersprofiel:', profile);
+    // Hier kun je verdere acties ondernemen, zoals het inloggen van de gebruiker in je systeem.
+  }
+});
 </script>
 
 </body>
