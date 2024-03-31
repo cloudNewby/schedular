@@ -55,11 +55,14 @@ function handleCredentialResponse(response) {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
-  // Voeg event listener toe aan de knop voor inloggen
-  const signInButton = document.getElementById("g_id_signin");
+  // Wacht tot het document is geladen voordat we de knop selecteren
+  document.addEventListener("DOMContentLoaded", function() {
+    // Voeg event listener toe aan de knop voor inloggen
+    const signInButton = document.getElementById("g_id_signin");
 
-  signInButton.addEventListener('click', () => {
-    signInWithGoogle();
+    signInButton.addEventListener('click', () => {
+      signInWithGoogle();
+    });
   });
 
   // Functie om in te loggen met Google
