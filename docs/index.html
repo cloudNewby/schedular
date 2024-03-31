@@ -23,7 +23,7 @@
        data-client_id="319141367834-6abirr91d7p42fgjrmkg8k1norjg21a1.apps.googleusercontent.com"
        data-login_uri="https://cloudnewby.github.io/schedular/schedular_from.html">
   </div>
-  <div class="g_id_signin" data-type="standard"></div>
+  <div id="signInButton" class="g_id_signin" data-type="standard">Inloggen met Google</div>
 </div>
 
 <script>
@@ -55,14 +55,11 @@ function handleCredentialResponse(response) {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
-  // Wacht tot het document is geladen voordat we de knop selecteren
-  document.addEventListener("DOMContentLoaded", function() {
-    // Voeg event listener toe aan de knop voor inloggen
-    const signInButton = document.getElementById("g_id_signin");
+  // Voeg event listener toe aan de knop voor inloggen
+  const signInButton = document.getElementById("signInButton");
 
-    signInButton.addEventListener('click', () => {
-      signInWithGoogle();
-    });
+  signInButton.addEventListener('click', () => {
+    signInWithGoogle();
   });
 
   // Functie om in te loggen met Google
